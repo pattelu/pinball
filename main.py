@@ -2,10 +2,12 @@ import pygame
 from sys import exit
 import random
 
+
 def dispaly_score():
     result_surf = result_font.render(f"RESULT: {p1_score}:{p2_score}", True, "grey")
     result_rect = result_surf.get_rect(center=((screen_x / 2), 20))
     screen.blit(result_surf, result_rect)
+
 
 # pygame setup
 pygame.init()
@@ -33,14 +35,16 @@ paddle_surf.fill("white")
 paddle_speed = 300
 
 paddle1_rect = paddle_surf.get_rect(center=(paddle_size_x + 5, screen_y / 2))
-paddle2_rect = paddle_surf.get_rect(center=(screen_x - (paddle_size_x + 5), screen_y / 2))
+paddle2_rect = paddle_surf.get_rect(
+    center=(screen_x - (paddle_size_x + 5), screen_y / 2)
+)
 
 # Ball
 ball_surf = pygame.image.load("img/ball.png").convert_alpha()
-ball_rect = ball_surf.get_rect(center=(screen_x/2, screen_y/2))
+ball_rect = ball_surf.get_rect(center=(screen_x / 2, screen_y / 2))
 
-ball_h_speed = 400 
-ball_v_speed = (random.randint(100, 400))
+ball_h_speed = 400
+ball_v_speed = random.randint(100, 400)
 
 while running:
 
@@ -52,7 +56,7 @@ while running:
     # Render elements
     screen.fill("black")
     dispaly_score()
-    pygame.draw.line(screen, "grey", (screen_x/2, 30), (screen_x/2, screen_y - 5))
+    pygame.draw.line(screen, "grey", (screen_x / 2, 30), (screen_x / 2, screen_y - 5))
     screen.blit(ball_surf, ball_rect)
     screen.blit(paddle_surf, paddle1_rect)
     screen.blit(paddle_surf, paddle2_rect)
@@ -94,7 +98,7 @@ while running:
         print("Game Over")
         p1_score += 1
         # Restar ball / stop game
-    if ball_rect.right <= 0: 
+    if ball_rect.right <= 0:
         print("Game Over")
         p2_score += 1
         # Restar ball / stop game
