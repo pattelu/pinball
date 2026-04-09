@@ -1,0 +1,1 @@
+Project just for have fun with Python.
